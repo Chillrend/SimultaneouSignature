@@ -6,7 +6,7 @@ const DatabaseHelper = require('../helpers/database-helper')
 router.get('/', function(req, res, next) {
   const db = DatabaseHelper.getDatabase();
 
-  const query = db.all('SELECT * FROM signature', (err, rows) => {
+  const query = db.all('SELECT _id, fullname, signature, organization, position FROM signature', (err, rows) => {
     res.render('index', { title: process.env.EVENT_NAME, scripts: [{script: "/javascripts/index.js"}] , signatures: rows });
   });
 });
@@ -31,5 +31,26 @@ router.post('/signs', function(req, res, next) {
 
   res.redirect('/');
 });
+
+router.get('/signs/all', function (req, res, next) {
+  const id = req.params.id;
+
+  const db = DatabaseHelper.getDatabase();
+  const query = db.all(`SELECT _id, fullname FROM signature`, (err, rows) => {
+    res.json(rows);
+  });
+
+});
+router.get('/signs/:id', function (req, res, next) {
+  const id = req.params.id;
+
+  const db = DatabaseHelper.getDatabase();
+  const query = db.get(`SELECT signature FROM signature WHERE _id=${id}`, (err, row) => {
+    res.send(row);
+  });
+
+});
+
+
 
 module.exports = router;
