@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+<p>SimultaneouSignature v1.0 - &copy; 2023 Farhan Hanif - UPATIK PNJ - <a href="https://github.com/Chillrend/SimultaneouSignature">Open Source</a></p>
+
+<div class="row">
+    <div class="col-lg-8 mt-3">
+        <h4>Edit Into Guests List</h4>
+        <form method="post" action="/admins/edit/{{guest._id}}">
+            <div class="mb-3 col-lg-8">
+                <label for="name" class="form-label">Fullname</label>
+                <input id="name" type="text" class="form-control" name="name" value="{{guest.fullname}}" />
+            </div>
+            <div class="mb-3 col-lg-8">
+                <label for="signature" class="form-label">Signature JSON</label>
+                <textarea id="signature" class="form-control" name="signature">{{guest.signature}}</textarea>
+            </div>
+            <div class="mb-3 col-lg-8">
+                <label for="organization" class="form-label">Organization</label>
+                <input id="organization" type="text" class="form-control" name="organization" value="{{guest.organization}}" />
+            </div>
+            <div class="mb-3 col-lg-8">
+                <label for="position" class="form-label">Position</label>
+                <input id="position" type="text" class="form-control" name="position" value="{{guest.position}}" />
+            </div>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+</div>

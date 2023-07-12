@@ -1,0 +1,54 @@
+<h1>{{title}}</h1>
+<p>SimultaneouSignature v1.0 - &copy; 2023 Farhan Hanif - UPATIK PNJ - <a href="https://github.com/Chillrend/SimultaneouSignature">Open Source</a></p>
+
+<div class="row">
+    <div class="col-lg-8">
+        {{#if message}}
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <div>
+                    {{message}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if error}}
+            <div class="alert alert-error d-flex align-items-center" role="alert">
+                <div>
+                    {{message}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="btn-group" role="group">
+            <a class="btn btn-info" href="/admins/reset_signature" id="refresh_btn">Reset Signature</a>
+            <a class="btn btn-success" href="/admins/reset_signature" id="refresh_btn">Preserve Database</a>
+            <a class="btn btn-primary" href="/admins/edit" id="refresh_btn">Edit Guests</a>
+            <a class="btn btn-danger" href="/admins/truncate" id="refresh_btn">Truncate All Guests</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mt-3">
+        <h4>Insert Into Guests List</h4>
+        <form method="post" action="/admins/insert_guests">
+            <div class="mb-3 col-lg-8">
+                <label for="name" class="form-label">Fullname</label>
+                <input id="name" type="text" class="form-control" name="name" />
+            </div>
+            <div class="mb-3 col-lg-8">
+                <label for="organization" class="form-label">Organization</label>
+                <input id="organization" type="text" class="form-control" name="organization" />
+            </div>
+            <div class="mb-3 col-lg-8">
+                <label for="position" class="form-label">Position</label>
+                <input id="position" type="text" class="form-control" name="position" />
+            </div>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+</div>
