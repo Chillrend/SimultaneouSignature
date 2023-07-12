@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   const db = DatabaseHelper.getDatabase();
 
   const query = db.all('SELECT _id, fullname, signature, organization, position FROM signature', (err, rows) => {
-    res.render('index', { title: process.env.EVENT_NAME, scripts: [{script: "/javascripts/index.js"}] , signatures: rows });
+    res.render('index', { title: process.env.EVENT_NAME, scripts: [{script: "/javascripts/jsketch.min.js"}, {script: "/javascripts/index.js"}] , signatures: rows });
   });
 });
 

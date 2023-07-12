@@ -3,9 +3,9 @@
 
 <form action="/signs" method="post" id="signature_form">
     <div class="mb-3 col-lg-8">
-        <label for="id" class="form-label">Fullname to be signed</label>
+        <label for="id" class="form-label fw-bold fs-5">Fullname to be signed</label>
         <select name="id" id="id" class="form-select">
-            <option value="0" label="Choose one from the name..."></option>
+            <option value="0" label="Choose one from the options..."></option>
             {{#each names}}
                 <option value="{{this._id}}" label="{{this.fullname}}"></option>
             {{/each}}
@@ -14,7 +14,7 @@
     </div>
 
     <div class="mb-3 col-lg-8">
-        <label for="signature" class="d-block form-label">Draw your signature below</label>
+        <label for="signature" class="d-block form-label fw-bold fs-5" >Draw your signature below</label>
         <canvas id="signature"></canvas>
         <div>
             <button id="clear" class="btn btn-sm btn-danger"><i class="fa fa-eraser"></i> Clear</button>
@@ -25,7 +25,7 @@
         <input type="hidden" name="signature" id="serialized_signature">
         <div class="form-text">Draw using your finger or pen tablet, and then click submit</div>
     </div>
-    <input type="submit" id="submit-signature" class="btn btn-info" title="Submit">
+    <input type="submit" id="submit-signature" class="btn btn-info fw-bold fs-5" title="Submit">
 
 </form>
 

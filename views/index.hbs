@@ -1,13 +1,15 @@
 <h1>{{title}}</h1>
 <p>SimultaneouSignature v1.0 - &copy; 2023 Farhan Hanif - UPATIK PNJ - <a href="https://github.com/Chillrend/SimultaneouSignature">Open Source</a></p>
 
+<button class="btn btn-info" id="refresh_btn">Refresh</button>
+
 <div class="row">
     {{#each signatures}}
-        <div class="col-lg-3 mx-3 my-3">
+        <div class="col-lg-3 my-3">
             <div>
-                <canvas class="position-absolute top-0 bottom-0" id="sign-{{this.id}}"></canvas>
+                <canvas id="sign-{{this._id}}"></canvas>
             </div>
-            <div class="text-center w-100 border-top">{{this.fullname}}</div>
+            <div class="fw-bold fs-5 text-center w-100 border-top">{{this.fullname}}</div>
             <div class="text-center w-100 border-top">{{this.position}}</div>
             <div class="text-center w-100 border-top">{{this.organization}}</div>
         </div>

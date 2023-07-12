@@ -1,37 +1,35 @@
-fetch('/signs/all')
-    .then(response => response.json())
-    .then((guests) => {
-        getSignOneByOne(guests);
-    });
+const canvas_components = document.getElementsByTagName('canvas');
+const canvases = Array.prototype.slice.call(canvas_components);
 
-async function getSignOneByOne (guests){
-    console.log(`Size left: ${guests.length}`);
+const options = {
+    // See https://luis.leiva.name/jsketch/js/docs/$.fn.sketchable.defaults.html for more configurable options.
+    interactive: false,
+    graphics: {
+        firstPointSize: 0,
+        lineWidth: 3,
+        strokeStyle: 'black',
+    }
+};
 
-    if(guests.length === 0) return;
+const refreshButton = document.getElementById('refresh_btn');
+refreshButton.addEventListener('click', renderSignature)
 
-    let guests_not_signed = [...guests];
+function renderSignature(){
+    canvases.forEach((canvas, index, canvases) => {
+        const components_id = canvas.getAttribute('id');
+        const id = components_id.slice(5,6);
 
-    setTimeout(function () {
-
-        guests_not_signed.forEach(async (item, index, object) => {
-            await fetch(`/signs/${item._id}`)
-                .then(response => response.json())
-                .then(sign => {
-                    console.log(sign);
-                    if(sign.signature !== ""){
-                        const canvas_component = document.getElementById(`sign-${item._id}`)
-                        drawSignature(canvas_component, sign.signature);
-                        object.splice(index, 1);
-                    }
-                });
-
-            getSignOneByOne(guests_not_signed)
-        });
-    }, 3000)
-
-
+        getSignature(id)
+            .then((signature_json) => {
+                if(signature_json.signature !== ""){
+                    const signature = JSON.parse(signature_json.signature);
+                    const sketcher = new Sketchable(canvas, options).strokes(signature.strokes).clear(true).animate.strokes();
+                }
+            });
+    })
 }
 
-function drawSignature(components, signature_json){
-
+async function getSignature(id){
+    return await fetch(`/signs/${id}`)
+        .then(response => response.json())
 }
