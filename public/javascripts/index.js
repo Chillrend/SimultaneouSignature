@@ -17,7 +17,10 @@ refreshButton.addEventListener('click', renderSignature)
 function renderSignature(){
     canvases.forEach((canvas, index, canvases) => {
         const components_id = canvas.getAttribute('id');
-        const id = components_id.slice(5,6);
+        const id_array = components_id.split('-');
+        const id = id_array[1];
+
+        console.log('id: ' + id);
 
         getSignature(id)
             .then((signature_json) => {
