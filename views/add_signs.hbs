@@ -4,7 +4,7 @@
         <select name="id" id="id" class="form-select">
             <option value="0" label="Choose one from the options..."></option>
             {{#each names}}
-                <option value="{{this._id}}" label="{{this.fullname}}"></option>
+                <option value="{{this._id}}" label="{{this.fullname}}">{{this.fullname}}</option>
             {{/each}}
         </select>
         <div class="form-text">Choose your name only, choosing other names will overwrite others signature on the main screen</div>
