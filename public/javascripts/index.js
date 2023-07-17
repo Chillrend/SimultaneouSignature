@@ -11,8 +11,6 @@ const options = {
     }
 };
 
-
-
 const refreshButton = document.getElementById('refresh_btn');
 refreshButton.addEventListener('click', renderSignature)
 
