@@ -11,6 +11,8 @@ const options = {
     }
 };
 
+
+
 const refreshButton = document.getElementById('refresh_btn');
 refreshButton.addEventListener('click', renderSignature)
 
@@ -36,3 +38,5 @@ async function getSignature(id){
     return await fetch(`/signs/${id}`)
         .then(response => response.json())
 }
+
+renderSignature();
